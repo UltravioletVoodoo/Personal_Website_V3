@@ -1,47 +1,23 @@
 <script lang="ts">
-	interface AnimationProps {
+	interface RotationAxis {
 		x: number;
 		y: number;
 		z: number;
-		duration: number;
 	}
 
-	const sideLength = 200;
+	const sideLength = 100;
 	const sideLengthStyle = `${sideLength}px`;
 
-	let animationProps: AnimationProps = { x: 1, y: 1, z: 0, duration: 5 };
-
-	function getRandomInt(min: number, max: number) {
-		const minCeiled = Math.ceil(min);
-		const maxFloored = Math.floor(max);
-		return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled); // The maximum is exclusive and the minimum is inclusive
-	}
-
-	function nudgeRandomly(value: number, min: number, max: number) {
-		const dx = 1;
-		const shouldRaise = getRandomInt(0, 2) === 1;
-		return shouldRaise ? Math.min(value + dx, max) : Math.max(value - dx, min);
-	}
-
-	function getAnimationValues(): AnimationProps {
-		return {
-			x: nudgeRandomly(animationProps.x, 1, 10),
-			y: nudgeRandomly(animationProps.y, 1, 10),
-			z: nudgeRandomly(animationProps.z, 1, 10),
-			duration: nudgeRandomly(animationProps.duration, 2, 10)
-		};
-	}
-
-	function recalculateAnimation() {
-		animationProps = getAnimationValues();
-	}
-
-	setInterval(recalculateAnimation, 500);
+	const rotationAxis: RotationAxis = {
+		x: Math.random() * 10,
+		y: Math.random() * 10,
+		z: Math.random() * 10
+	};
 </script>
 
 <div
 	class="container"
-	style="--sideLength: {sideLengthStyle}; --vectorX: {animationProps.x}; --vectorY: {animationProps.y}; --vectorZ: {animationProps.z}; --duration: {`${animationProps.duration}s`}"
+	style="--sideLength: {sideLengthStyle}; --vectorX: {rotationAxis.x}; --vectorY: {rotationAxis.y}; --vectorZ: {rotationAxis.z}"
 >
 	<div class="cube">
 		<div class="face one">1</div>
@@ -82,7 +58,7 @@
 		animation-name: spin;
 		animation-timing-function: linear;
 		animation-iteration-count: infinite;
-		animation-duration: var(--duration);
+		animation-duration: 10s;
 		position: relative;
 	}
 	.face {
@@ -95,9 +71,6 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-	}
-	.face:hover {
-		background-color: red;
 	}
 	.one {
 		transform: translate3d(
