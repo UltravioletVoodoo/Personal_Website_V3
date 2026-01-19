@@ -1,13 +1,12 @@
 <script lang="ts">
 	import Cube from '$lib/components/cube.svelte';
+	import D4 from '$lib/components/d4.svelte';
 </script>
 
 <h1>Personal Website V3</h1>
 <div class="polyhedraContainer">
 	<Cube />
-	<Cube />
-	<Cube />
-	<Cube />
+	<D4 />
 </div>
 
 <style>

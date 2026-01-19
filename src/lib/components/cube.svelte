@@ -5,8 +5,8 @@
 		z: number;
 	}
 
-	const sideLength = 100;
-	const sideLengthStyle = `${sideLength}px`;
+	const edgeLength = 100;
+	const edgeLengthStyle = `${edgeLength}px`;
 
 	const rotationAxis: RotationAxis = {
 		x: Math.random() * 10,
@@ -17,7 +17,7 @@
 
 <div
 	class="container"
-	style="--sideLength: {sideLengthStyle}; --vectorX: {rotationAxis.x}; --vectorY: {rotationAxis.y}; --vectorZ: {rotationAxis.z}"
+	style="--edgeLength: {edgeLengthStyle}; --vectorX: {rotationAxis.x}; --vectorY: {rotationAxis.y}; --vectorZ: {rotationAxis.z}"
 >
 	<div class="cube">
 		<div class="face one">1</div>
@@ -41,8 +41,8 @@
 
 	.container {
 		border: 1px solid green;
-		width: calc(var(--sideLength) * sqrt(3));
-		height: calc(var(--sideLength) * sqrt(3));
+		width: calc(var(--edgeLength) * sqrt(3));
+		height: calc(var(--edgeLength) * sqrt(3));
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -64,8 +64,8 @@
 	.face {
 		opacity: 0.1;
 		position: absolute;
-		width: var(--sideLength);
-		height: var(--sideLength);
+		width: var(--edgeLength);
+		height: var(--edgeLength);
 		background-color: pink;
 		border: 3px solid blue;
 		display: flex;
@@ -74,30 +74,30 @@
 	}
 	.one {
 		transform: translate3d(
-			calc(var(--sideLength) / -2),
-			calc(var(--sideLength) / -2),
-			calc(var(--sideLength) / -2)
+			calc(var(--edgeLength) / -2),
+			calc(var(--edgeLength) / -2),
+			calc(var(--edgeLength) / -2)
 		);
 	}
 	.two {
 		transform: rotate(180deg)
 			translate3d(
-				calc(var(--sideLength) / 2),
-				calc(var(--sideLength) / 2),
-				calc(var(--sideLength) / 2)
+				calc(var(--edgeLength) / 2),
+				calc(var(--edgeLength) / 2),
+				calc(var(--edgeLength) / 2)
 			);
 	}
 	.three {
-		transform: rotateX(90deg) translate3d(calc(var(--sideLength) / -2), 0, 0);
+		transform: rotateX(90deg) translate3d(calc(var(--edgeLength) / -2), 0, 0);
 	}
 	.four {
 		transform: rotateX(-90deg)
-			translate3d(calc(var(--sideLength) / -2), 0, calc(var(--sideLength) * -1));
+			translate3d(calc(var(--edgeLength) / -2), 0, calc(var(--edgeLength) * -1));
 	}
 	.five {
-		transform: rotateY(90deg) translate3d(0, calc(var(--sideLength) / -2), 0);
+		transform: rotateY(90deg) translate3d(0, calc(var(--edgeLength) / -2), 0);
 	}
 	.six {
-		transform: rotateY(-90deg) translate3d(0, calc(var(--sideLength) / -2), var(--sideLength));
+		transform: rotateY(-90deg) translate3d(0, calc(var(--edgeLength) / -2), var(--edgeLength));
 	}
 </style>
