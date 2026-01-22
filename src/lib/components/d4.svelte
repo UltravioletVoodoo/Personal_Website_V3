@@ -1,5 +1,5 @@
 <script lang="ts">
-	const containerSize = 500;
+	const containerSize = 175;
 	const containerSizeStyle = `${containerSize}px`;
 	const edgeLengthStyle = `${containerSize / 2}px`;
 </script>
