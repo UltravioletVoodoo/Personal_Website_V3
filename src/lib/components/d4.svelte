@@ -15,9 +15,12 @@
 		<div class="faceContainer two">
 			<div class="facePanel"></div>
 		</div>
-		<!-- <div class="face two">2</div>
-        <div class="face three">3</div>
-        <div class="face four">4</div> -->
+		<div class="faceContainer three">
+			<div class="facePanel"></div>
+		</div>
+		<div class="faceContainer four">
+			<div class="facePanel"></div>
+		</div>
 	</div>
 </div>
 
@@ -27,7 +30,7 @@
 			transform: rotate3d(0, 0, 0, 0);
 		}
 		to {
-			transform: rotate3d(4, 3, 1, 360deg);
+			transform: rotate3d(1, 1, 1, 360deg);
 		}
 	}
 
@@ -46,7 +49,7 @@
 		animation-name: spin;
 		animation-timing-function: linear;
 		animation-iteration-count: infinite;
-		animation-duration: 10s;
+		animation-duration: 20s;
 	}
 	.faceContainer {
 		width: var(--edgeLength);
@@ -76,7 +79,23 @@
 		border-left: calc(var(--edgeLength) / 2) solid transparent;
 		top: 6px;
 	}
-	.facePanel::after {
+	.one {
+		transform: translate3d(
+			calc(var(--edgeLength) * -1 / 2),
+			calc(var(--edgeLength) * sqrt(3) / -3),
+			-50px
+		);
+	}
+	.two {
+		transform: rotate3d(1, 0, 0, -90deg) translate3d(-125px, -68px, -32px);
+	}
+	.three {
+		transform: rotate3d(1, 0, 0, -90deg) rotate3d(0, 1, 0, -125deg) translate3d(-8px, -68px, 235px);
+	}
+	.four {
+		transform: rotate3d(1, 0, 0, -90deg) rotate3d(0, 1, 0, -60deg) translate3d(-150px, -66px, -14px);
+	}
+	.one::after {
 		content: '1';
 		position: absolute;
 		font-size: 64px;
@@ -84,7 +103,28 @@
 		top: calc(var(--edgeLength) * sqrt(3) / 4);
 		left: calc(var(--edgeLength) / 2 - 16px);
 	}
-	.one {
-		transform: translateZ(calc(var(--edgeLength) * sqrt(3) / 2));
+	.two::after {
+		content: '2';
+		position: absolute;
+		font-size: 64px;
+		font-weight: bold;
+		top: calc(var(--edgeLength) * sqrt(3) / 4);
+		left: calc(var(--edgeLength) / 2 - 16px);
+	}
+	.three::after {
+		content: '3';
+		position: absolute;
+		font-size: 64px;
+		font-weight: bold;
+		top: calc(var(--edgeLength) * sqrt(3) / 4);
+		left: calc(var(--edgeLength) / 2 - 16px);
+	}
+	.four::after {
+		content: '4';
+		position: absolute;
+		font-size: 64px;
+		font-weight: bold;
+		top: calc(var(--edgeLength) * sqrt(3) / 4);
+		left: calc(var(--edgeLength) / 2 - 16px);
 	}
 </style>
