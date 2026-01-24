@@ -1,6 +1,7 @@
 <div class="container">
 	<div class="d4">
 		<div class="face one">1</div>
+		<div class="face one">1</div>
 	</div>
 </div>
 
@@ -39,15 +40,15 @@
 		animation-name: spin;
 		animation-timing-function: linear;
 		animation-iteration-count: infinite;
-		animation-duration: 100s;
-		border: 1px solid green;
-		display: flex;
-		align-items: center;
-		justify-content: center;
+		animation-duration: 10s;
+		width: 0px;
+		height: 0px;
+		border: 10px solid green;
 	}
 	.face {
-		position: relative;
-		bottom: calc((var(--edgeLength) - var(--triangleHeight)) / 2);
+		position: absolute;
+		left: calc(var(--edgeLength) / -2);
+		top: calc(var(--edgeLength) * (1 - (1 / (2 * sqrt(3)))) * -1);
 		width: var(--edgeLength);
 		height: var(--edgeLength);
 		background-color: red;
