@@ -100,15 +100,14 @@
 	}
 	.one {
 		background-color: green;
-		transform: translateZ(var(--faceToCenterDistance));
 	}
 	.two {
-		transform: rotateY(acos(1/3)) translateZ(calc(var(--faceToCenterDistance) * -1));
+		transform: rotateZ(60deg) translateX(340px) translateY(92px);
 	}
 	.three {
-		transform: rotateY(acos(-1/3)) translateZ(var(--faceToCenterDistance));
+		transform: rotateZ(60deg) translateX(-158px) translateY(91px);
 	}
 	.four {
-		transform: rotateX(acos(1/3)) translateZ(calc(var(--faceToCenterDistance) * -2));
+		transform: rotateZ(60deg) translateX(91px) translateY(-340px);
 	}
 </style>
