@@ -20,12 +20,6 @@
 </div>
 
 <style>
-	:root {
-		/*Root Variable is --containerSize. All Properties should be derived*/
-		--edgeLength: calc(var(--containerSize) / 2);
-		--halfEdgeLength: calc(var(--edgeLength) / 2);
-	}
-
 	@keyframes spin {
 		from {
 			transform: rotate3d(0, 0, 0, 0);
@@ -36,6 +30,10 @@
 	}
 
 	.container {
+		/*Root Variable is --containerSize. All Properties should be derived*/
+		--edgeLength: calc(var(--containerSize) / 2);
+		--halfEdgeLength: calc(var(--edgeLength) / 2);
+
 		width: var(--containerSize);
 		height: var(--containerSize);
 		border: 1px solid green;

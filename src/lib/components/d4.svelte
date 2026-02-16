@@ -12,11 +12,20 @@
 </div>
 
 <style>
-	:root {
+	@keyframes spin {
+		from {
+			transform: rotate3d(0, 0, 0, 0);
+		}
+		to {
+			transform: rotate3d(1, 1, 1, 360deg);
+		}
+	}
+
+	.container {
 		/*Root Variable is --containerSize. All Properties should be derived*/
 
 		/*True triangle vars*/
-		--edgeLength: calc(var(--containerSize) / 2);
+		--edgeLength: calc(var(--containerSize) / 1.5);
 		--halfEdgeLength: calc(var(--edgeLength) / 2);
 		--triangleHeight: calc(var(--edgeLength) * sqrt(3) / 2);
 		--borderWidth: calc(var(--edgeLength) / 50);
@@ -28,18 +37,7 @@
 
 		/*Tetrahedral vars*/
 		--faceToCenterDistance: calc(var(--edgeLength) * ((sqrt(8) / sqrt(12)) / 4));
-	}
 
-	@keyframes spin {
-		from {
-			transform: rotate3d(0, 0, 0, 0);
-		}
-		to {
-			transform: rotate3d(1, 1, 1, 360deg);
-		}
-	}
-
-	.container {
 		width: var(--containerSize);
 		height: var(--containerSize);
 		border: 1px solid green;
