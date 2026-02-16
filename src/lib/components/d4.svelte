@@ -1,30 +1,36 @@
-<script lang="ts">
-	const containerSize = 175;
-	const containerSizeStyle = `${containerSize}px`;
-	const edgeLengthStyle = `${containerSize / 2}px`;
-</script>
-
-<div
-	class="container"
-	style="--containerSize: {containerSizeStyle}; --edgeLength: {edgeLengthStyle}"
->
+<div class="container">
 	<div class="d4">
-		<div class="faceContainer one">
-			<div class="facePanel"></div>
+		<div class="face one"></div>
+		<div class="face two"></div>
+		<div class="symmetry first">
+			<div class="face two"></div>
 		</div>
-		<div class="faceContainer two">
-			<div class="facePanel"></div>
-		</div>
-		<div class="faceContainer three">
-			<div class="facePanel"></div>
-		</div>
-		<div class="faceContainer four">
-			<div class="facePanel"></div>
+		<div class="symmetry second">
+			<div class="face two"></div>
 		</div>
 	</div>
 </div>
 
 <style>
+	:root {
+		/*Root Variable. All other values derived from this variable*/
+		--containerSize: 300px;
+
+		/*True triangle vars*/
+		--edgeLength: calc(var(--containerSize) / 2);
+		--halfEdgeLength: calc(var(--edgeLength) / 2);
+		--triangleHeight: calc(var(--edgeLength) * sqrt(3) / 2);
+		--borderWidth: calc(var(--edgeLength) / 50);
+
+		/*Inner triangle vars*/
+		--innerTriangleEdgeLength: calc(var(--edgeLength) - var(--borderWidth) * 2);
+		--innerTriangleHalfEdgeLength: calc(var(--innerTriangleEdgeLength) / 2);
+		--innerTriangleHeight: calc(var(--innerTriangleEdgeLength) * sqrt(3) / 2);
+
+		/*Tetrahedral vars*/
+		--faceToCenterDistance: calc(var(--edgeLength) * ((sqrt(8) / sqrt(12)) / 4));
+	}
+
 	@keyframes spin {
 		from {
 			transform: rotate3d(0, 0, 0, 0);
@@ -35,96 +41,82 @@
 	}
 
 	.container {
-		border: 1px solid green;
 		width: var(--containerSize);
 		height: var(--containerSize);
+		border: 1px solid green;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 	}
 	.d4 {
-		transform-style: preserve-3d;
-		border: 5px solid orange;
-		transform: rotate3d(1, 1, 0, 45deg);
 		animation-name: spin;
 		animation-timing-function: linear;
 		animation-iteration-count: infinite;
-		animation-duration: 20s;
+		animation-duration: 10s;
+		width: 0px;
+		height: 0px;
+		transform-style: preserve-3d;
 	}
-	.faceContainer {
+	.symmetry {
+		transform-style: preserve-3d;
+	}
+	.first {
+		transform: rotateZ(120deg);
+	}
+	.second {
+		transform: rotateZ(-120deg);
+	}
+	.face {
+		opacity: 1;
+		position: absolute;
+		left: calc(var(--edgeLength) / -2);
+		top: calc(var(--edgeLength) * (1 - (1 / (2 * sqrt(3)))) * -1);
 		width: var(--edgeLength);
-		height: calc(var(--edgeLength) * sqrt(3) / 2);
-		position: absolute;
+		height: var(--edgeLength);
+		background-color: red;
 		display: flex;
+		align-items: center;
 		justify-content: center;
-	}
-	.facePanel {
-		opacity: 0.5;
-		width: 0;
-		height: 0;
-		border-top: unset;
-		border-right: calc((var(--edgeLength) + 10px) / 2) solid transparent;
-		border-bottom: calc((var(--edgeLength) + 10px) * sqrt(3) / 2) solid green;
-		border-left: calc((var(--edgeLength) + 10px) / 2) solid transparent;
-	}
-	.facePanel::before {
-		content: '';
-		width: 0;
-		height: 0;
-		position: absolute;
-		left: 0;
-		border-top: unset;
-		border-right: calc(var(--edgeLength) / 2) solid transparent;
-		border-bottom: calc(var(--edgeLength) * sqrt(3) / 2) solid purple;
-		border-left: calc(var(--edgeLength) / 2) solid transparent;
-		top: 6px;
-	}
-	.one {
-		transform: translate3d(
-			calc(var(--edgeLength) * -1 / 2),
-			calc(var(--edgeLength) * sqrt(3) / -3),
-			-50px
+		clip-path: polygon(
+			0% var(--edgeLength),
+			var(--halfEdgeLength) calc(100% - var(--triangleHeight)),
+			var(--edgeLength) var(--edgeLength),
+			0% var(--edgeLength)
 		);
 	}
-	.two {
-		transform: rotate3d(1, 0, 0, -90deg) translate3d(-125px, -68px, -32px);
+	.face::before {
+		content: '';
+		position: absolute;
+		top: calc(var(--borderWidth) * sqrt(2));
+		left: var(--borderWidth);
+		width: var(--innerTriangleEdgeLength);
+		height: var(--innerTriangleEdgeLength);
+		background-color: blue;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		clip-path: polygon(
+			0% var(--innerTriangleEdgeLength),
+			var(--innerTriangleHalfEdgeLength) calc(100% - var(--innerTriangleHeight)),
+			var(--innerTriangleEdgeLength) var(--innerTriangleEdgeLength),
+			0% var(--innerTriangleEdgeLength)
+		);
+		transform-origin: center;
 	}
-	.three {
-		transform: rotate3d(1, 0, 0, -90deg) rotate3d(0, 1, 0, -125deg) translate3d(-8px, -68px, 235px);
-	}
-	.four {
-		transform: rotate3d(1, 0, 0, -90deg) rotate3d(0, 1, 0, -60deg) translate3d(-150px, -66px, -14px);
-	}
-	.one::after {
+	.face::after {
 		content: '1';
 		position: absolute;
-		font-size: 64px;
+		font-size: calc(var(--innerTriangleEdgeLength) / 4);
 		font-weight: bold;
-		top: calc(var(--edgeLength) * sqrt(3) / 4);
-		left: calc(var(--edgeLength) / 2 - 16px);
+		color: red;
+		top: calc(var(--innerTriangleEdgeLength) / 1.8);
 	}
-	.two::after {
-		content: '2';
-		position: absolute;
-		font-size: 64px;
-		font-weight: bold;
-		top: calc(var(--edgeLength) * sqrt(3) / 4);
-		left: calc(var(--edgeLength) / 2 - 16px);
+	.one {
+		transform: translateZ(var(--faceToCenterDistance));
 	}
-	.three::after {
-		content: '3';
-		position: absolute;
-		font-size: 64px;
-		font-weight: bold;
-		top: calc(var(--edgeLength) * sqrt(3) / 4);
-		left: calc(var(--edgeLength) / 2 - 16px);
-	}
-	.four::after {
-		content: '4';
-		position: absolute;
-		font-size: 64px;
-		font-weight: bold;
-		top: calc(var(--edgeLength) * sqrt(3) / 4);
-		left: calc(var(--edgeLength) / 2 - 16px);
+	.two {
+		transform-origin: calc(var(--halfEdgeLength) * 1) calc(var(--edgeLength) * ((6 - sqrt(3)) / 6))
+			calc(var(--faceToCenterDistance) * -1);
+		transform: translateZ(var(--faceToCenterDistance)) rotateX(-109deg) rotateY(0deg) rotateZ(60deg);
 	}
 </style>
