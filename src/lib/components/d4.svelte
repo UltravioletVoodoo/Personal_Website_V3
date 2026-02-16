@@ -13,8 +13,7 @@
 
 <style>
 	:root {
-		/*Root Variable. All other values derived from this variable*/
-		--containerSize: 300px;
+		/*Root Variable is --containerSize. All Properties should be derived*/
 
 		/*True triangle vars*/
 		--edgeLength: calc(var(--containerSize) / 2);
@@ -67,7 +66,7 @@
 		transform: rotateZ(-120deg);
 	}
 	.face {
-		opacity: 1;
+		opacity: 0.5;
 		position: absolute;
 		left: calc(var(--edgeLength) / -2);
 		top: calc(var(--edgeLength) * (1 - (1 / (2 * sqrt(3)))) * -1);
@@ -104,7 +103,7 @@
 		transform-origin: center;
 	}
 	.face::after {
-		content: '1';
+		content: '';
 		position: absolute;
 		font-size: calc(var(--innerTriangleEdgeLength) / 4);
 		font-weight: bold;
