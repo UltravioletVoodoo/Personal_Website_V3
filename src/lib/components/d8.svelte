@@ -2,16 +2,28 @@
 	<div class="d4">
 		<div class="placeholder"></div>
 		<div class="symmetry first">
-			<div class="face"></div>
+			<div class="face top"></div>
 		</div>
 		<div class="symmetry second">
-			<div class="face"></div>
+			<div class="face top"></div>
 		</div>
 		<div class="symmetry third">
-			<div class="face"></div>
+			<div class="face top"></div>
 		</div>
 		<div class="symmetry fourth">
-			<div class="face"></div>
+			<div class="face top"></div>
+		</div>
+		<div class="symmetry first">
+			<div class="face bottom"></div>
+		</div>
+		<div class="symmetry second">
+			<div class="face bottom"></div>
+		</div>
+		<div class="symmetry third">
+			<div class="face bottom"></div>
+		</div>
+		<div class="symmetry fourth">
+			<div class="face bottom"></div>
 		</div>
 	</div>
 </div>
@@ -85,8 +97,6 @@
 			0% var(--edgeLength)
 		);
 		transform-origin: var(--halfEdgeLength) var(--triangleCenterYOffset);
-		transform: translateY(165px) translateZ(-114px) rotateX(atan(sqrt(2)));
-		/**TODO: get a precise value here. This isnt good enough. Mathematically precise!*/
 	}
 	.face::before {
 		content: '';
@@ -114,19 +124,26 @@
 		color: red;
 		top: calc(var(--innerTriangleEdgeLength) / 1.8);
 	}
+	.top {
+		transform: translateY(165px) translateZ(-114px) rotateX(atan(sqrt(2)));
+		/**TODO: get a precise value here. This isnt good enough. Mathematically precise!*/
+	}
+	.bottom {
+		transform: translateY(165px) translateZ(114px) rotateX(calc(atan(sqrt(2)) * -1));
+		/**TODO: get a precise value here. This isnt good enough. Mathematically precise!*/
+	}
 	.symmetry {
 		transform-style: preserve-3d;
 	}
 	.first {
-		transform: translateY(calc(var(--edgeLength) * -1));
 	}
 	.second {
-		transform: translateY(calc(var(--edgeLength) * -1)) rotateZ(90deg);
+		transform: rotateZ(90deg);
 	}
 	.third {
-		transform: translateY(calc(var(--edgeLength) * -1)) rotateZ(180deg);
+		transform: rotateZ(180deg);
 	}
 	.fourth {
-		transform: translateY(calc(var(--edgeLength) * -1)) rotateZ(270deg);
+		transform: rotateZ(270deg);
 	}
 </style>
