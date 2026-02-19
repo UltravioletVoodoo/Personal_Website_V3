@@ -1,16 +1,18 @@
 <div class="container">
 	<div class="d4">
 		<div class="placeholder"></div>
-		<div class="face one"></div>
-		<!-- <div class="symmetry first">
-			<div class="face one"></div>
+		<div class="symmetry first">
+			<div class="face"></div>
 		</div>
 		<div class="symmetry second">
-			<div class="face one"></div>
+			<div class="face"></div>
 		</div>
 		<div class="symmetry third">
-			<div class="face one"></div>
-		</div> -->
+			<div class="face"></div>
+		</div>
+		<div class="symmetry fourth">
+			<div class="face"></div>
+		</div>
 	</div>
 </div>
 
@@ -65,18 +67,6 @@
 		background-color: aqua;
 		transform: translate(calc(var(--halfEdgeLength) * -1), calc(var(--halfEdgeLength) * -1));
 	}
-	.symmetry {
-		transform-style: preserve-3d;
-	}
-	.first {
-		transform: rotateZ(90deg);
-	}
-	.second {
-		transform: rotateZ(180deg);
-	}
-	.third {
-		transform: rotateZ(270deg);
-	}
 	.face {
 		opacity: 0.5;
 		position: absolute;
@@ -94,6 +84,9 @@
 			var(--edgeLength) var(--edgeLength),
 			0% var(--edgeLength)
 		);
+		transform-origin: var(--halfEdgeLength) var(--triangleCenterYOffset);
+		transform: translateY(165px) translateZ(-114px) rotateX(atan(sqrt(2)));
+		/**TODO: get a precise value here. This isnt good enough. Mathematically precise!*/
 	}
 	.face::before {
 		content: '';
@@ -121,9 +114,19 @@
 		color: red;
 		top: calc(var(--innerTriangleEdgeLength) / 1.8);
 	}
-	.one {
-		transform-origin: var(--halfEdgeLength) var(--triangleCenterYOffset);
-		transform: rotateX(atan(sqrt(2))) rotateY(0deg) rotateZ(0deg);
-		/**TODO: get a precise value here. 0.21 isnt good enough. Mathematically precise!*/
+	.symmetry {
+		transform-style: preserve-3d;
+	}
+	.first {
+		transform: translateY(calc(var(--edgeLength) * -1));
+	}
+	.second {
+		transform: translateY(calc(var(--edgeLength) * -1)) rotateZ(90deg);
+	}
+	.third {
+		transform: translateY(calc(var(--edgeLength) * -1)) rotateZ(180deg);
+	}
+	.fourth {
+		transform: translateY(calc(var(--edgeLength) * -1)) rotateZ(270deg);
 	}
 </style>
