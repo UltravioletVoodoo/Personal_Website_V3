@@ -53,7 +53,9 @@
 	.face {
 		opacity: 0.7;
 		position: absolute;
-		border: 1px solid blue;
+		outline-width: calc(var(--edgeLength) / 50); /*TODO: this border looks weird*/
+		outline-color: blue;
+		outline-style: solid;
 		width: var(--edgeLength);
 		height: var(--edgeLength);
 		background-color: pink;

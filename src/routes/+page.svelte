@@ -9,11 +9,14 @@
 	<D4 />
 	<D6 />
 	<D8 />
+	<D8 />
+	<D8 />
+	<D8 />
 </div>
 
 <style>
 	:root {
-		--containerSize: 1000px;
+		--containerSize: 10vw;
 	}
 	.polyhedraContainer {
 		display: flex;

@@ -1,7 +1,6 @@
 <div class="container">
 	<div class="d4">
-		<div class="placeholder"></div>
-		<div class="symmetry first">
+		<div class="symmetry">
 			<div class="face top"></div>
 		</div>
 		<div class="symmetry second">
@@ -13,7 +12,7 @@
 		<div class="symmetry fourth">
 			<div class="face top"></div>
 		</div>
-		<div class="symmetry first">
+		<div class="symmetry">
 			<div class="face bottom"></div>
 		</div>
 		<div class="symmetry second">
@@ -42,7 +41,7 @@
 		/*Root Variable is --containerSize. All Properties should be derived*/
 
 		/*True triangle vars*/
-		--edgeLength: calc(var(--containerSize) / 2);
+		--edgeLength: calc(var(--containerSize) / 1.7);
 		--halfEdgeLength: calc(var(--edgeLength) / 2);
 		--triangleHeight: calc(var(--edgeLength) * sqrt(3) / 2);
 		--borderWidth: calc(var(--edgeLength) / 50);
@@ -70,14 +69,6 @@
 		width: 0px;
 		height: 0px;
 		transform-style: preserve-3d;
-		border: 5px solid green;
-	}
-	.placeholder {
-		opacity: 0.2;
-		width: var(--edgeLength);
-		height: var(--edgeLength);
-		background-color: aqua;
-		transform: translate(calc(var(--halfEdgeLength) * -1), calc(var(--halfEdgeLength) * -1));
 	}
 	.face {
 		opacity: 0.5;
@@ -125,17 +116,17 @@
 		top: calc(var(--innerTriangleEdgeLength) / 1.8);
 	}
 	.top {
-		transform: translateY(165px) translateZ(-114px) rotateX(atan(sqrt(2)));
+		transform: translateY(calc(var(--edgeLength) * 0.33))
+			translateZ(calc(var(--edgeLength) * -0.228)) rotateX(atan(sqrt(2)));
 		/**TODO: get a precise value here. This isnt good enough. Mathematically precise!*/
 	}
 	.bottom {
-		transform: translateY(165px) translateZ(114px) rotateX(calc(atan(sqrt(2)) * -1));
+		transform: translateY(calc(var(--edgeLength) * 0.33))
+			translateZ(calc(var(--edgeLength) * 0.228)) rotateX(calc(atan(sqrt(2)) * -1));
 		/**TODO: get a precise value here. This isnt good enough. Mathematically precise!*/
 	}
 	.symmetry {
 		transform-style: preserve-3d;
-	}
-	.first {
 	}
 	.second {
 		transform: rotateZ(90deg);

@@ -25,7 +25,7 @@
 		/*Root Variable is --containerSize. All Properties should be derived*/
 
 		/*True triangle vars*/
-		--edgeLength: calc(var(--containerSize) / 1.5);
+		--edgeLength: calc(var(--containerSize) / 1.3);
 		--halfEdgeLength: calc(var(--edgeLength) / 2);
 		--triangleHeight: calc(var(--edgeLength) * sqrt(3) / 2);
 		--borderWidth: calc(var(--edgeLength) / 50);
