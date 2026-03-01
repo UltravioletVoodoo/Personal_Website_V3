@@ -1,28 +1,30 @@
 <script lang="ts">
-	import D4 from '$lib/components/d4.svelte';
-	import D6 from '$lib/components/d6.svelte';
-	import D8 from '$lib/components/d8.svelte';
+	import Polyhedra from '$lib/components/Polyhedra.svelte';
 </script>
 
-<h1>Personal Website V3</h1>
-<div class="polyhedraContainer">
-	<D4 />
-	<D6 />
-	<D8 />
-	<D8 />
-	<D8 />
-	<D8 />
+<div class="container">
+	<div class="header">header</div>
+	<div class="body">
+		<Polyhedra />
+	</div>
+	<div class="footer">footer</div>
 </div>
 
 <style>
 	:root {
 		--containerSize: 10vw;
 	}
-	.polyhedraContainer {
+	.container {
 		display: flex;
-		flex-wrap: wrap;
-		border: 1px solid gray;
-		gap: 1rem;
-		padding: 1rem;
+		flex-grow: 1;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-between;
+	}
+	.header {
+	}
+	.body {
+	}
+	.footer {
 	}
 </style>
