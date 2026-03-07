@@ -19,7 +19,11 @@
 		flex-wrap: wrap;
 		gap: 1rem;
 		padding: 1rem;
-		box-shadow: 0px 0px 50px 20px lightgray;
+		box-shadow: 0px 0px 50px 20px cadetblue;
 		border-radius: 5rem;
+		background-color: white;
+		border: 5px solid cyan;
+		background: radial-gradient(cyan, black 1px, transparent);
+		background-size: 8px 8px;
 	}
 </style>

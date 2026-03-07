@@ -40,7 +40,6 @@
 
 		width: var(--containerSize);
 		height: var(--containerSize);
-		border: 1px solid green;
 		display: flex;
 		align-items: center;
 		justify-content: center;
