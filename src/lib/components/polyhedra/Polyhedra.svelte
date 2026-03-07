@@ -1,7 +1,7 @@
 <script>
-	import D4 from './polyhedra/d4.svelte';
-	import D6 from './polyhedra/d6.svelte';
-	import D8 from './polyhedra/d8.svelte';
+	import D4 from './d4.svelte';
+	import D6 from './d6.svelte';
+	import D8 from './d8.svelte';
 </script>
 
 <div class="container">

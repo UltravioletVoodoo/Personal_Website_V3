@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Polyhedra from '$lib/components/Polyhedra.svelte';
+	import SideNav from '$lib/components/sidenav/SideNav.svelte';
 
 	interface Point {
 		x: number;
@@ -48,11 +48,7 @@
 	class="container"
 	style="--rX: {rotateVector.x}; --rY: {rotateVector.y}; --rMag: {rotateVector.magnitude}; "
 >
-	<div class="header">header</div>
-	<div class="body">
-		<Polyhedra />
-	</div>
-	<div class="footer">footer</div>
+	<SideNav />
 </div>
 
 <style>
@@ -64,19 +60,11 @@
 		flex-grow: 1;
 		flex-direction: column;
 		align-items: center;
-		justify-content: space-between;
+		justify-content: center;
 		transform-style: preserve-3d;
 		transform: rotate3d(var(--rX), var(--rY), 0, var(--rMag));
 		border: 1px solid green;
 		background-color: black;
 		box-shadow: inset 0 0 300px -140px cyan;
-	}
-	.header {
-		color: white;
-	}
-	.body {
-	}
-	.footer {
-		color: white;
 	}
 </style>
