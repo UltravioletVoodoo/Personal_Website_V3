@@ -1,5 +1,5 @@
 <script lang="ts">
-	import SideNav from '$lib/components/sidenav/SideNav.svelte';
+	import SideNav from '$lib/components/navigation/NavigationGroup.svelte';
 
 	interface Point {
 		x: number;
@@ -52,9 +52,6 @@
 </div>
 
 <style>
-	:root {
-		--containerSize: min(10vw, 75px);
-	}
 	.container {
 		display: flex;
 		flex-grow: 1;
@@ -63,8 +60,9 @@
 		justify-content: center;
 		transform-style: preserve-3d;
 		transform: rotate3d(var(--rX), var(--rY), 0, var(--rMag));
-		border: 1px solid green;
 		background-color: black;
 		box-shadow: inset 0 0 300px -140px cyan;
+		background: radial-gradient(cyan, black 1px, black);
+		background-size: 14px 14px;
 	}
 </style>

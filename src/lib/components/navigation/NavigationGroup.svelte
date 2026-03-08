@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Polyhedra from '../polyhedra/Polyhedra.svelte';
+	import ContentSelector from '../content/ContentSelector.svelte';
 	import NavigationButton from './NavigationButton.svelte';
 
 	let selectedIndex = $state(0);
@@ -11,9 +11,7 @@
 
 <div class="container">
 	<div class="content">
-		<div>
-			<Polyhedra />
-		</div>
+		<ContentSelector {selectedIndex} />
 	</div>
 	<div class="navigation">
 		<NavigationButton
@@ -46,6 +44,7 @@
 		flex-direction: column;
 		margin: 10rem 0;
 		gap: 1rem;
+		width: min(60vw, 800px);
 	}
 	.content {
 		display: flex;

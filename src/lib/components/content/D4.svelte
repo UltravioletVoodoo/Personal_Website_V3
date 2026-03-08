@@ -23,6 +23,7 @@
 
 	.container {
 		/*Root Variable is --containerSize. All Properties should be derived*/
+		--containerSize: min(60vw, 800px);
 
 		/*True triangle vars*/
 		--edgeLength: calc(var(--containerSize) / 1.3);
@@ -63,7 +64,7 @@
 		transform: rotateZ(-120deg);
 	}
 	.face {
-		opacity: 0.5;
+		opacity: 0.3;
 		position: absolute;
 		left: calc(var(--edgeLength) / -2);
 		top: calc(var(--edgeLength) * (1 - (1 / (2 * sqrt(3)))) * -1);
