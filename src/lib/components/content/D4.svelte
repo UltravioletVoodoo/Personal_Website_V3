@@ -70,7 +70,7 @@
 		top: calc(var(--edgeLength) * (1 - (1 / (2 * sqrt(3)))) * -1);
 		width: var(--edgeLength);
 		height: var(--edgeLength);
-		background-color: var(--accentColor);
+		background-color: var(--secondaryColor);
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -105,7 +105,6 @@
 		position: absolute;
 		font-size: calc(var(--innerTriangleEdgeLength) / 4);
 		font-weight: bold;
-		color: red;
 		top: calc(var(--innerTriangleEdgeLength) / 1.8);
 	}
 	.one {

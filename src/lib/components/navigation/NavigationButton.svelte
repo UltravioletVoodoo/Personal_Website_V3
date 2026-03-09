@@ -22,7 +22,7 @@
 		cursor: pointer;
 	}
 	button:hover {
-		background-color: var(--accentColor);
+		background-color: var(--primaryColorSecondary);
 	}
 	button.selected {
 		background-color: var(--secondaryColor);

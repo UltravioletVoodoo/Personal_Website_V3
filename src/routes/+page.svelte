@@ -67,12 +67,14 @@
 <style>
 	:root {
 		--primaryColor: cyan;
+		--primaryColorSecondary: cadetblue;
 		--secondaryColor: brown;
 		--accentColor: burlywood;
 		--backgroundColor: black;
 	}
 	:root[theme='light'] {
 		--primaryColor: darkgreen;
+		--primaryColorSecondary: green;
 		--secondaryColor: mediumslateblue;
 		--accentColor: coral;
 		--backgroundColor: white;
