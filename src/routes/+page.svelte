@@ -1,6 +1,6 @@
 <script lang="ts">
 	import NavigationGroup from '$lib/components/navigation/NavigationGroup.svelte';
-	import { onMount } from 'svelte';
+	import ThemeSelector from '$lib/components/theme/ThemeSelector.svelte';
 
 	interface Point {
 		x: number;
@@ -41,17 +41,6 @@
 		rotateVector.y = y;
 		rotateVector.magnitude = magnitude;
 	}
-
-	// Handle light/dark mode
-	let theme = 'dark';
-	function toggleTheme() {
-		theme = theme === 'dark' ? 'light' : 'dark';
-		document.documentElement.setAttribute('theme', theme);
-	}
-
-	onMount(() => {
-		document.documentElement.setAttribute('theme', theme);
-	});
 </script>
 
 <svelte:window onmousemove={handleMouseMove} />
@@ -60,25 +49,11 @@
 	class="container"
 	style="--rX: {rotateVector.x}; --rY: {rotateVector.y}; --rMag: {rotateVector.magnitude}; "
 >
-	<button onclick={toggleTheme}>Toggle Theme</button>
+	<ThemeSelector />
 	<NavigationGroup />
 </div>
 
 <style>
-	:root {
-		--primaryColor: cyan;
-		--primaryColorSecondary: cadetblue;
-		--secondaryColor: brown;
-		--accentColor: burlywood;
-		--backgroundColor: black;
-	}
-	:root[theme='light'] {
-		--primaryColor: darkgreen;
-		--primaryColorSecondary: green;
-		--secondaryColor: mediumslateblue;
-		--accentColor: coral;
-		--backgroundColor: white;
-	}
 	.container {
 		display: flex;
 		flex-grow: 1;
