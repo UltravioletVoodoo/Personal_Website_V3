@@ -12,7 +12,7 @@
 
 <style>
 	button {
-		background-color: cyan;
+		background-color: var(--primaryColor);
 		transform: skewX(-20deg);
 		border: none;
 		color: black;
@@ -22,9 +22,9 @@
 		cursor: pointer;
 	}
 	button:hover {
-		background-color: cadetblue;
+		background-color: var(--accentColor);
 	}
 	button.selected {
-		background-color: brown;
+		background-color: var(--secondaryColor);
 	}
 </style>

@@ -15,6 +15,6 @@
 <style>
 	h1,
 	p {
-		color: cyan;
+		color: var(--primaryColor);
 	}
 </style>

@@ -1,5 +1,6 @@
 <script lang="ts">
-	import SideNav from '$lib/components/navigation/NavigationGroup.svelte';
+	import NavigationGroup from '$lib/components/navigation/NavigationGroup.svelte';
+	import { onMount } from 'svelte';
 
 	interface Point {
 		x: number;
@@ -40,6 +41,17 @@
 		rotateVector.y = y;
 		rotateVector.magnitude = magnitude;
 	}
+
+	// Handle light/dark mode
+	let theme = 'dark';
+	function toggleTheme() {
+		theme = theme === 'dark' ? 'light' : 'dark';
+		document.documentElement.setAttribute('theme', theme);
+	}
+
+	onMount(() => {
+		document.documentElement.setAttribute('theme', theme);
+	});
 </script>
 
 <svelte:window onmousemove={handleMouseMove} />
@@ -48,10 +60,23 @@
 	class="container"
 	style="--rX: {rotateVector.x}; --rY: {rotateVector.y}; --rMag: {rotateVector.magnitude}; "
 >
-	<SideNav />
+	<button onclick={toggleTheme}>Toggle Theme</button>
+	<NavigationGroup />
 </div>
 
 <style>
+	:root {
+		--primaryColor: cyan;
+		--secondaryColor: brown;
+		--accentColor: burlywood;
+		--backgroundColor: black;
+	}
+	:root[theme='light'] {
+		--primaryColor: darkgreen;
+		--secondaryColor: mediumslateblue;
+		--accentColor: coral;
+		--backgroundColor: white;
+	}
 	.container {
 		display: flex;
 		flex-grow: 1;
@@ -61,8 +86,12 @@
 		transform-style: preserve-3d;
 		transform: rotate3d(var(--rX), var(--rY), 0, var(--rMag));
 		background-color: black;
-		box-shadow: inset 0 0 300px -140px cyan;
-		background: radial-gradient(cyan, black 1px, black);
+		box-shadow: inset 0 0 300px -140px var(--primaryColor);
+		background: radial-gradient(
+			var(--primaryColor),
+			var(--backgroundColor) 1px,
+			var(--backgroundColor)
+		);
 		background-size: 14px 14px;
 	}
 </style>

@@ -70,7 +70,7 @@
 		top: calc(var(--edgeLength) * (1 - (1 / (2 * sqrt(3)))) * -1);
 		width: var(--edgeLength);
 		height: var(--edgeLength);
-		background-color: red;
+		background-color: var(--accentColor);
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -88,7 +88,7 @@
 		left: var(--borderWidth);
 		width: var(--innerTriangleEdgeLength);
 		height: var(--innerTriangleEdgeLength);
-		background-color: blue;
+		background-color: var(--primaryColor);
 		display: flex;
 		align-items: center;
 		justify-content: center;
