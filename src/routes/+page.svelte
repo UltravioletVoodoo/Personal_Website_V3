@@ -55,6 +55,7 @@
 
 <style>
 	.container {
+		font-family: math;
 		display: flex;
 		flex-grow: 1;
 		flex-direction: column;

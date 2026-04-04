@@ -1,4 +1,4 @@
-<div>
+<div class="content">
 	<h1>About Me</h1>
 	<p>
 		My name is <strong>Jonathan Bezeau</strong>. I'm a software engineer, cosplay enthusiast, and
@@ -45,6 +45,18 @@
 </div>
 
 <style>
+	/*
+	Fade-in animation
+	*/
+	@keyframes fade-in {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
+	}
+
 	h1,
 	h2,
 	strong {
@@ -58,5 +70,12 @@
 	}
 	a {
 		color: var(--accentColor);
+	}
+	.content {
+		opacity: 0;
+		animation-name: fade-in;
+		animation-duration: 1s;
+		animation-delay: 0.5s;
+		animation-fill-mode: forwards;
 	}
 </style>
