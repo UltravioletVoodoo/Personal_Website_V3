@@ -7,9 +7,7 @@
 </script>
 
 <div>
-	{#if selectedIndex === 0}
-		<D4 />
-	{:else if selectedIndex === 1}
+	{#if selectedIndex === 1}
 		<AboutMe />
 	{:else if selectedIndex === 2}
 		<TextContent title="Professional" content="I have lots of work experience..." />

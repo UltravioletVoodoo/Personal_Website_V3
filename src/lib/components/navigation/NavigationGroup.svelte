@@ -1,5 +1,6 @@
 <script lang="ts">
 	import ContentSelector from '../content/ContentSelector.svelte';
+	import D4 from '../content/D4.svelte';
 	import NavigationButton from './NavigationButton.svelte';
 
 	let selectedIndex = $state(0);
@@ -11,6 +12,7 @@
 
 <div class="container">
 	<div class="content">
+		<D4 small={selectedIndex !== 0} />
 		<ContentSelector {selectedIndex} />
 	</div>
 	<div class="navigation">
@@ -48,6 +50,7 @@
 	}
 	.content {
 		display: flex;
+		flex-direction: column;
 		flex-grow: 1;
 		align-items: center;
 	}

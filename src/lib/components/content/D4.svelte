@@ -1,4 +1,13 @@
-<div class="container">
+<script lang="ts">
+	interface D4Props {
+		small: boolean;
+	}
+
+	const { small }: D4Props = $props();
+	const maxContainerSize = $derived(`${small ? 300 : 800}px`);
+</script>
+
+<div class="container" style="--maxContainerSize: {maxContainerSize}">
 	<div class="d4">
 		<div class="face one"></div>
 		<div class="face two"></div>
@@ -23,7 +32,7 @@
 
 	.container {
 		/*Root Variable is --containerSize. All Properties should be derived*/
-		--containerSize: min(60vw, 800px);
+		--containerSize: min(60vw, var(--maxContainerSize));
 
 		/*True triangle vars*/
 		--edgeLength: calc(var(--containerSize) / 1.3);
@@ -44,6 +53,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		transition: 1s;
 	}
 	.d4 {
 		animation-name: spin;
