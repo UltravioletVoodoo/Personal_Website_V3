@@ -21,5 +21,9 @@
 		display: flex;
 		flex-grow: 1;
 		justify-content: center;
+		background-color: black;
+		padding: 1rem;
+		border-radius: 1rem;
+		box-shadow: 0 0 150px 100px black;
 	}
 </style>
