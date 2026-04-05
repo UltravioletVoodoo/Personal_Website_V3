@@ -1,6 +1,6 @@
 <script lang="ts">
-	import NavigationGroup from '$lib/components/navigation/NavigationGroup.svelte';
-	import ThemeSelector from '$lib/components/theme/ThemeSelector.svelte';
+	import D4 from '$lib/components/D4.svelte';
+	import ThemeSelector from '$lib/components/ThemeSelector.svelte';
 
 	interface Point {
 		x: number;
@@ -34,7 +34,12 @@
 		return { y: diffPoint.x, x: diffPoint.y, magnitude: degreeify(getMagnitude(diffPoint)) };
 	}
 
-	function handleMouseMove(e: MouseEvent) {
+	function handlePointerMove(e: PointerEvent) {
+		// We only want to do the paralax effect for mouse users. Touch gets awkward
+		if (e.pointerType !== 'mouse') {
+			return;
+		}
+
 		const { x, y, magnitude } = getVectorFromCenter(e.x, e.y);
 
 		rotateVector.x = x;
@@ -43,19 +48,19 @@
 	}
 </script>
 
-<svelte:window onmousemove={handleMouseMove} />
+<svelte:window onpointermove={handlePointerMove} />
 
 <div
 	class="container"
 	style="--rX: {rotateVector.x}; --rY: {rotateVector.y}; --rMag: {rotateVector.magnitude}; "
 >
 	<ThemeSelector />
-	<NavigationGroup />
+	<D4 />
+	<h1>Pure CSS Tetrahedron</h1>
 </div>
 
 <style>
 	.container {
-		font-family: math;
 		display: flex;
 		flex-grow: 1;
 		flex-direction: column;
@@ -71,5 +76,10 @@
 			var(--backgroundColor)
 		);
 		background-size: 14px 14px;
+	}
+	h1 {
+		color: var(--primaryColor);
+		font-family: cursive;
+		font-size: 60px;
 	}
 </style>

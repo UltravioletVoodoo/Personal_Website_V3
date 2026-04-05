@@ -39,7 +39,7 @@
 		height: 100px;
 		width: 100px;
 		border-radius: 100%;
-		background-color: var(--otherBackgroundColor);
+		background-color: var(--primaryColor);
 		color: var(--backgroundColor);
 		border: 5px solid var(--secondaryColor);
 		opacity: 0.5;
